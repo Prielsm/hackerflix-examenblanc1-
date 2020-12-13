@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  // min-height: 100%;
+}
+.d-none {
+  display: none;
+}
+.flex {
+  display: flex;
+}
+body {
+  background-image: url(./static/images/galaxyBG.jpeg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Roboto";
+  color: $primary-color;
+  text-align: center;
+
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgb(92, 147, 161);
+    opacity: 0.9;
+    display: block;
+    border-bottom: white solid 1px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 8;
+    h1 {
+      margin: 25px 0 25px 25px;
+
+      text-align: center;
+    }
+    button {
+      font-size: 15px;
+      padding: 15px;
+      margin: 0 20px;
+      border-radius: 5px;
+      font-weight: 800;
+
+      &:hover{
+        background-color: rgb(221, 141, 113);
+      }
+    }
+  }
+
+  main {
+    margin-top: 150px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+}
+
+
+.poster {
+  padding: 2% 2%;
+  img {
+    width: 250px;
+    height: 300px;
+  }
+}
+
+.no-poster{
+  padding: 2% 2%;
+  background-color: white;
+  z-index: 0;
+  opacity: 0.8;
+  width: 250px;
+  height: 300px;
+  margin: 0 2%;
+  .title {
+    text-align: center;
+    color: black;
+    font-size: 20px;
+  }
+  p{
+    color: black;
+    font-size: 17px;
+    text-align: left;
+  }
+}
