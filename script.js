@@ -8,11 +8,12 @@ const app = document.getElementById('app');
 app.innerHTML += `
     <nav class="flex">
         <h1>Hackerflix And Chill</h1>
-        <button id='recent'>Recent film only</button>
+        <button id='recent'>Recent films only</button>
     </nav>
 `;
 
 function render() {
+  // création de posters
   let stringPosters = '<main class="flex">';
   movies.forEach((movie) => {
     if (movie.img === true) {
@@ -20,12 +21,14 @@ function render() {
             <div class="poster">
                 <img src="posters/${movie.imdb}.jpg" alt="">
 
-                <section class="no-poster d-none">
+                <section class="no-poster d-none">                    
                     <p class="title"><strong>${movie.title}</strong></p>
+                    <i class="fas fa-times"></i>
+                    
                     <p>Année : ${movie.year}</p>
                     <p>Genre : ${movie.genres}</p>
                     <p>Notes : ${movie.note}</p>
-                    <p>Plot : ${movie.title}</p>
+                    <p>Plot : ${movie.plot}</p>
                 </section>
             </div>
         `;
@@ -34,10 +37,11 @@ function render() {
             <div class="no-poster poster">
                 <p class="title"><strong>${movie.title}</strong></p>
                 <section class="d-none">
+                    <i class="fas fa-times"></i>
                     <p>Année : ${movie.year}</p>
                     <p>Genre : ${movie.genres}</p>
                     <p>Notes : ${movie.note}</p>
-                    <p>Plot : ${movie.title}</p>
+                    <p>Plot : ${movie.plot}</p>
                 </section>
             </div>
         `;
@@ -47,6 +51,7 @@ function render() {
 
   app.innerHTML += stringPosters;
 
+  // ajout des descriptions sur les posters
   const posters = app.querySelectorAll('.poster');
   //   console.log(posters);
   posters.forEach((poster) => {
@@ -70,6 +75,7 @@ function render() {
     });
   });
 
+  // ajout du bouton pour les films récents
   const buttonRecent = document.getElementById('recent');
   console.log(buttonRecent);
   buttonRecent.addEventListener('click', () => {
@@ -80,8 +86,10 @@ function render() {
       if (movies[i].year < 2000) {
         if (recentPoster.classList.contains('d-none')) {
           recentPoster.classList.remove('d-none');
+          buttonRecent.innerHTML = 'Recent films only';
         } else {
           recentPoster.classList.add('d-none');
+          buttonRecent.innerHTML = 'All films';
         }
       }
     });

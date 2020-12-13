@@ -67,6 +67,22 @@ body {
     width: 250px;
     height: 300px;
   }
+  .no-poster{
+    position: relative;
+  }
+  position: relative;
+  i {
+    font-size: 30px;
+    color: black;
+    margin-left: 50px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+
+    &:hover{
+      color: rgb(133, 126, 126);
+    }
+  }
 }
 
 .no-poster{
