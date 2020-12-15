@@ -7,10 +7,36 @@ const app = document.getElementById('app');
 
 app.innerHTML += `
     <nav class="flex">
-        <h1>Hackerflix And Chill</h1>
-        <button id='recent'>Recent films only</button>
+        <h1>Hackerflix And Chill</h1>        
+        <div class="flex">
+          <button id='recent'>Recent films only</button>
+          <select id="monSelect">
+            <option value="toutGenre" selected>Tout voir</option>
+            <option value="thriller">Thriller</option>
+            <option value="drama">Drama</option>
+            <option value="crime">Crime</option>
+            <option value="biography">Biography</option>
+            <option value="history">History</option>
+            <option value="comedy">Comedy</option>
+            <option value="romance">Romance</option>
+            <option value="mystery">Mystery</option>
+            <option value="caperStory">Caper Story</option>
+            <option value="slasher">Slasher</option>
+            <option value="scienceFiction">Science Fiction</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="animation">Animation</option>
+            <option value="adventure">Adventure</option>
+            <option value="documentary">Documentary</option>
+            <option value="shortFilm">Short Film</option>
+            <option value="indieFilm">Indie Film</option>
+            <option value="tVFilm">TV Film</option>
+          </select> 
+          <button id="buttonSelect">Chercher</button>
+          </div>
     </nav>
 `;
+
+// -------------------------------------pour trier les genres----------------------------------------------
 
 function render() {
   // création de posters
@@ -70,6 +96,7 @@ function render() {
     });
   });
 
+  // ajout d'un event sur la croix pour refermer les descriptions
   document.body.addEventListener('click', (e) => {
     if (e.target.matches('.fa-times')) {
       const parent = e.target.parentNode;
@@ -83,6 +110,8 @@ function render() {
         imgParent.classList.remove('d-none');
       }
       // console.log(movies[e.target.id]);
+    } else if (e.target.matches(document.getElementById('comedy'))) {
+      console.log('this comedy!');
     }
   });
 
@@ -105,6 +134,42 @@ function render() {
         }
       }
     });
+  });
+
+  // event sur le bouton du select
+  const monSelect = document.getElementById('monSelect');
+  const buttonSelect = document.getElementById('buttonSelect');
+  buttonSelect.addEventListener('click', () => {
+    // console.log(monSelect.value);
+    // console.log(monSelect.options[monSelect.selectedIndex].text);
+    posters.forEach((poster, i) => {
+      const arrayGenre = movies[i].genres;
+      // console.log(arrayGenre.find((element) => element === monSelect.options[monSelect.selectedIndex].text));
+      // console.log(monSelect.options[monSelect.selectedIndex].text);
+      if (arrayGenre.find((element) => element === monSelect.options[monSelect.selectedIndex].text) !== monSelect.options[monSelect.selectedIndex].text) {
+        poster.classList.add('d-none');
+      }
+    });
+  });
+
+  // ajout de l'event sur select pour trier par genre
+  posters.forEach((poster, i) => {
+    const arrayGenre = movies[i].genres;
+    // if (poster.contains.classList('d-none')) {
+    //   poster.classList.remove('d-none');
+    // }
+    if (arrayGenre.find((element) => element === 'Thriller') !== 'Thriller') {
+      poster.classList.add('d-none');
+    }
+    // } else if (arrayGenre.find((element) => element === 'Drama') !== 'Drama') {
+    //   poster.classList.add('d-none');
+    // } else if (arrayGenre.find((element) => element === 'Crime') !== 'Crime') {
+    //   poster.classList.add('d-none');
+    // } else if (arrayGenre.find((element) => element === 'Biography') !== 'Biography') {
+    //   poster.classList.add('d-none');
+    // } else if (arrayGenre.find((element) => element === 'Drama') !== 'Drama') {
+    //   poster.classList.add('d-none');
+    // }
   });
 
   console.log(app);

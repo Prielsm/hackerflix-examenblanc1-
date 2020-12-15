@@ -38,17 +38,27 @@ body {
 
       text-align: center;
     }
-    button {
+    button, select {
       font-size: 15px;
       padding: 15px;
-      margin: 0 20px;
+      margin: 0 40px;
       border-radius: 5px;
       font-weight: 800;
 
-      &:hover{
-        background-color: rgb(221, 141, 113);
-      }
     }
+    button:hover {
+      background-color: rgb(221, 141, 113);
+
+    }
+    select {
+      border: 2px solid black;
+      margin-right: 0px;
+    }
+    #buttonSelect {
+      margin-left: 5px;
+    }
+
+    
   }
 
   main {
