@@ -63,6 +63,10 @@ body {
 
 .poster {
   padding: 2% 2%;
+  section {
+    overflow-y: auto;
+
+  }
   img {
     width: 250px;
     height: 300px;
@@ -93,6 +97,8 @@ body {
   width: 250px;
   height: 300px;
   margin: 0 2%;
+  overflow-y: auto;
+
   .title {
     text-align: center;
     color: black;

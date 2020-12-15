@@ -15,7 +15,7 @@ app.innerHTML += `
 function render() {
   // création de posters
   let stringPosters = '<main class="flex">';
-  movies.forEach((movie) => {
+  movies.forEach((movie, i) => {
     if (movie.img === true) {
       stringPosters += `
             <div class="poster">
@@ -23,7 +23,7 @@ function render() {
 
                 <section class="no-poster d-none">                    
                     <p class="title"><strong>${movie.title}</strong></p>
-                    <i class="fas fa-times"></i>
+                    <i class="fas fa-times" id="${i}"></i>
                     
                     <p>Année : ${movie.year}</p>
                     <p>Genre : ${movie.genres}</p>
@@ -54,7 +54,7 @@ function render() {
   // ajout des descriptions sur les posters
   const posters = app.querySelectorAll('.poster');
   //   console.log(posters);
-  posters.forEach((poster) => {
+  posters.forEach((poster, i) => {
     const section = poster.querySelector('section');
     const img = poster.querySelector('img');
     // console.log(section);
@@ -62,17 +62,28 @@ function render() {
       if (poster.classList.contains('no-poster')) {
         if (section.classList.contains('d-none')) {
           section.classList.remove('d-none');
-        } else {
-          section.classList.add('d-none');
         }
       } else if (section.classList.contains('d-none')) {
         section.classList.remove('d-none');
         img.classList.add('d-none');
-      } else {
-        section.classList.add('d-none');
-        img.classList.remove('d-none');
       }
     });
+  });
+
+  document.body.addEventListener('click', (e) => {
+    if (e.target.matches('.fa-times')) {
+      const parent = e.target.parentNode;
+      console.log(parent);
+      const imgParent = parent.parentNode.querySelector('img');
+      console.log(imgParent);
+      if (parent.classList.contains('no-poster')) {
+        parent.classList.add('d-none');
+      } else {
+        parent.classList.add('d-none');
+        imgParent.classList.remove('d-none');
+      }
+      console.log(movies[e.target.id]);
+    }
   });
 
   // ajout du bouton pour les films récents
@@ -82,6 +93,7 @@ function render() {
     console.log('hi');
     const recentsPosters = app.querySelectorAll('.poster');
     console.log(recentsPosters);
+
     recentsPosters.forEach((recentPoster, i) => {
       if (movies[i].year < 2000) {
         if (recentPoster.classList.contains('d-none')) {
@@ -99,3 +111,27 @@ function render() {
 }
 
 render();
+
+// -----------------------------------------Pour trier les notes------------------------------------------------------
+
+// array.forEach(element => {
+//   movies.forEach(movie => {
+//   noteHaute = '';
+//   movie.note
+//   --> récupérer l'élement qui a la note la plus haute
+//   if movie.note>noteHaute
+//     noteHaute = movie.note;
+// });
+// nouvelleListe = [];
+// nouvelleListe += noteHaute;
+// });
+
+// movies.forEach(movie => {
+//   listeNotes = [];
+//   listeNotes += movie.note;
+// });
+
+// listeHautversBas = [];
+// listeNotes.forEach(element => {
+//   listeNotes.max
+// });
