@@ -36,7 +36,7 @@ function render() {
       stringPosters += `
             <div class="no-poster poster">
                 <p class="title"><strong>${movie.title}</strong></p>
-                <section class="d-none">
+                <section class="d-none section_noposter">
                     <i class="fas fa-times"></i>
                     <p>Année : ${movie.year}</p>
                     <p>Genre : ${movie.genres}</p>
@@ -54,7 +54,7 @@ function render() {
   // ajout des descriptions sur les posters
   const posters = app.querySelectorAll('.poster');
   //   console.log(posters);
-  posters.forEach((poster, i) => {
+  posters.forEach((poster) => {
     const section = poster.querySelector('section');
     const img = poster.querySelector('img');
     // console.log(section);
@@ -76,13 +76,13 @@ function render() {
       console.log(parent);
       const imgParent = parent.parentNode.querySelector('img');
       console.log(imgParent);
-      if (parent.classList.contains('no-poster')) {
+      if (parent.classList.contains('section_noposter')) {
         parent.classList.add('d-none');
       } else {
         parent.classList.add('d-none');
         imgParent.classList.remove('d-none');
       }
-      console.log(movies[e.target.id]);
+      // console.log(movies[e.target.id]);
     }
   });
 
