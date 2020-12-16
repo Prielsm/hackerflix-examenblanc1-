@@ -5,6 +5,7 @@ console.log(movies[0].title);
 
 const app = document.getElementById('app');
 
+// -----------------------------------------------------------------création de la nav bar--------------------------------------------------------
 app.innerHTML += `
     <nav class="flex">
         <h1>Hackerflix And Chill</h1>        
@@ -36,10 +37,8 @@ app.innerHTML += `
     </nav>
 `;
 
-// -------------------------------------pour trier les genres----------------------------------------------
-
 function render() {
-  // création de posters
+  // ------------------------------------------------------------création de posters---------------------------------------------------
   let stringPosters = '<main class="flex">';
   movies.forEach((movie, i) => {
     if (movie.img === true) {
@@ -77,7 +76,7 @@ function render() {
 
   app.innerHTML += stringPosters;
 
-  // ajout des descriptions sur les posters
+  // -----------------------------------------------ajout des descriptions sur les posters (event sur poster)-------------------------------------------------------
   const posters = app.querySelectorAll('.poster');
   //   console.log(posters);
   posters.forEach((poster) => {
@@ -96,7 +95,7 @@ function render() {
     });
   });
 
-  // ajout d'un event sur la croix pour refermer les descriptions
+  // -----------------------------------ajout d'un event sur la croix pour refermer les descriptions----------------------------------
   document.body.addEventListener('click', (e) => {
     if (e.target.matches('.fa-times')) {
       const parent = e.target.parentNode;
@@ -110,12 +109,10 @@ function render() {
         imgParent.classList.remove('d-none');
       }
       // console.log(movies[e.target.id]);
-    } else if (e.target.matches(document.getElementById('comedy'))) {
-      console.log('this comedy!');
     }
   });
 
-  // ajout du bouton pour les films récents
+  // ----------------------------------------------set up du bouton pour les films récents------------------------------------------
   const buttonRecent = document.getElementById('recent');
   console.log(buttonRecent);
   buttonRecent.addEventListener('click', () => {
@@ -136,23 +133,23 @@ function render() {
     });
   });
 
-  // event sur le bouton du select
-  const monSelect = document.getElementById('monSelect');
-  const buttonSelect = document.getElementById('buttonSelect');
-  buttonSelect.addEventListener('click', () => {
-    // console.log(monSelect.value);
-    // console.log(monSelect.options[monSelect.selectedIndex].text);
-    posters.forEach((poster, i) => {
-      const arrayGenre = movies[i].genres;
-      // console.log(arrayGenre.find((element) => element === monSelect.options[monSelect.selectedIndex].text));
-      // console.log(monSelect.options[monSelect.selectedIndex].text);
-      if (arrayGenre.find((element) => element === monSelect.options[monSelect.selectedIndex].text) !== monSelect.options[monSelect.selectedIndex].text) {
-        poster.classList.add('d-none');
-      }
-    });
-  });
+  // // -------------------------------------bouton lié au select pour trier avec les genres----------------------------------------------
+  // const monSelect = document.getElementById('monSelect');
+  // const buttonSelect = document.getElementById('buttonSelect');
+  // buttonSelect.addEventListener('click', () => {
+  //   // console.log(monSelect.value);
+  //   // console.log(monSelect.options[monSelect.selectedIndex].text);
+  //   posters.forEach((poster, i) => {
+  //     const arrayGenre = movies[i].genres;
+  //     // console.log(arrayGenre.find((element) => element === monSelect.options[monSelect.selectedIndex].text));
+  //     // console.log(monSelect.options[monSelect.selectedIndex].text);
+  //     if (arrayGenre.find((element) => element === monSelect.options[monSelect.selectedIndex].text) !== monSelect.options[monSelect.selectedIndex].text) {
+  //       poster.classList.add('d-none');
+  //     }
+  //   });
+  // });
 
-  // ajout de l'event sur select pour trier par genre
+  // ------------------------------------------------TEST DU TRI PAR GENRE AVEC LE GENRE THRILLER-------------------------------------------------
   posters.forEach((poster, i) => {
     const arrayGenre = movies[i].genres;
     // if (poster.contains.classList('d-none')) {
@@ -161,16 +158,17 @@ function render() {
     if (arrayGenre.find((element) => element === 'Thriller') !== 'Thriller') {
       poster.classList.add('d-none');
     }
-    // } else if (arrayGenre.find((element) => element === 'Drama') !== 'Drama') {
-    //   poster.classList.add('d-none');
-    // } else if (arrayGenre.find((element) => element === 'Crime') !== 'Crime') {
-    //   poster.classList.add('d-none');
-    // } else if (arrayGenre.find((element) => element === 'Biography') !== 'Biography') {
-    //   poster.classList.add('d-none');
-    // } else if (arrayGenre.find((element) => element === 'Drama') !== 'Drama') {
-    //   poster.classList.add('d-none');
-    // }
   });
+  //   // } else if (arrayGenre.find((element) => element === 'Drama') !== 'Drama') {
+  //   //   poster.classList.add('d-none');
+  //   // } else if (arrayGenre.find((element) => element === 'Crime') !== 'Crime') {
+  //   //   poster.classList.add('d-none');
+  //   // } else if (arrayGenre.find((element) => element === 'Biography') !== 'Biography') {
+  //   //   poster.classList.add('d-none');
+  //   // } else if (arrayGenre.find((element) => element === 'Drama') !== 'Drama') {
+  //   //   poster.classList.add('d-none');
+  //   // }
+  // });
 
   console.log(app);
 }
