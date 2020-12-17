@@ -12,25 +12,25 @@ app.innerHTML += `
         <div class="flex">
           <button id='recent'>Recent films only</button>
           <select id="monSelect">
-            <option value="toutGenre" selected>Tout voir</option>
-            <option value="thriller">Thriller</option>
-            <option value="drama">Drama</option>
-            <option value="crime">Crime</option>
-            <option value="biography">Biography</option>
-            <option value="history">History</option>
-            <option value="comedy">Comedy</option>
-            <option value="romance">Romance</option>
-            <option value="mystery">Mystery</option>
-            <option value="caperStory">Caper Story</option>
-            <option value="slasher">Slasher</option>
-            <option value="scienceFiction">Science Fiction</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="animation">Animation</option>
-            <option value="adventure">Adventure</option>
-            <option value="documentary">Documentary</option>
-            <option value="shortFilm">Short Film</option>
-            <option value="indieFilm">Indie Film</option>
-            <option value="tVFilm">TV Film</option>
+            <option selected>Tout voir</option>
+            <option>Thriller</option>
+            <option>Drama</option>
+            <option>Crime</option>
+            <option>Biography</option>
+            <option>History</option>
+            <option>Comedy</option>
+            <option>Romance</option>
+            <option>Mystery</option>
+            <option>Caper Story</option>
+            <option>Slasher</option>
+            <option>Science Fiction</option>
+            <option>Fantasy</option>
+            <option>Animation</option>
+            <option>Adventure</option>
+            <option>Documentary</option>
+            <option>Short Film</option>
+            <option>Indie Film</option>
+            <option>TV Film</option>
           </select> 
           <button id="buttonSelect">Chercher</button>
           </div>
@@ -134,40 +134,34 @@ function render() {
   });
 
   // // -------------------------------------bouton lié au select pour trier avec les genres----------------------------------------------
-  // const monSelect = document.getElementById('monSelect');
-  // const buttonSelect = document.getElementById('buttonSelect');
-  // buttonSelect.addEventListener('click', () => {
-  //   // console.log(monSelect.value);
-  //   // console.log(monSelect.options[monSelect.selectedIndex].text);
-  //   posters.forEach((poster, i) => {
-  //     const arrayGenre = movies[i].genres;
-  //     // console.log(arrayGenre.find((element) => element === monSelect.options[monSelect.selectedIndex].text));
-  //     // console.log(monSelect.options[monSelect.selectedIndex].text);
-  //     if (arrayGenre.find((element) => element === monSelect.options[monSelect.selectedIndex].text) !== monSelect.options[monSelect.selectedIndex].text) {
-  //       poster.classList.add('d-none');
-  //     }
-  //   });
-  // });
+  const monSelect = document.getElementById('monSelect');
+  const buttonSelect = document.getElementById('buttonSelect');
+  buttonSelect.addEventListener('click', () => {
+    // console.log(monSelect.value);
+    // console.log(monSelect.options[monSelect.selectedIndex].text);
+    posters.forEach((poster, i) => {
+      const arrayGenre = movies[i].genres;
+      const myOption = monSelect.options[monSelect.selectedIndex].text;
+      // console.log(arrayGenre.find((element) => element === monSelect.options[monSelect.selectedIndex].text));
+      // if (arrayGenre.find((element) => element === myOption) !== myOption) {
+      //   poster.classList.add('d-none');
+      // }
+      // if (poster.contains.classList('d-none')) {
+      //   poster.classList.remove('d-none');
+      // }
+      if (!arrayGenre.some((element) => element === myOption)) {
+        poster.classList.add('d-none');
+      }
+    });
+  });
 
   // ------------------------------------------------TEST DU TRI PAR GENRE AVEC LE GENRE THRILLER-------------------------------------------------
-  posters.forEach((poster, i) => {
-    const arrayGenre = movies[i].genres;
-    // if (poster.contains.classList('d-none')) {
-    //   poster.classList.remove('d-none');
-    // }
-    if (arrayGenre.find((element) => element === 'Thriller') !== 'Thriller') {
-      poster.classList.add('d-none');
-    }
-  });
-  //   // } else if (arrayGenre.find((element) => element === 'Drama') !== 'Drama') {
-  //   //   poster.classList.add('d-none');
-  //   // } else if (arrayGenre.find((element) => element === 'Crime') !== 'Crime') {
-  //   //   poster.classList.add('d-none');
-  //   // } else if (arrayGenre.find((element) => element === 'Biography') !== 'Biography') {
-  //   //   poster.classList.add('d-none');
-  //   // } else if (arrayGenre.find((element) => element === 'Drama') !== 'Drama') {
-  //   //   poster.classList.add('d-none');
-  //   // }
+  // posters.forEach((poster, i) => {
+  //   const arrayGenre = movies[i].genres;
+
+  //   if (arrayGenre.find((element) => element === 'Thriller') !== 'Thriller') {
+  //     poster.classList.add('d-none');
+  //   }
   // });
 
   console.log(app);
