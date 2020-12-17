@@ -143,11 +143,13 @@ function render() {
       const arrayGenre = movies[i].genres;
       const myOption = monSelect.options[monSelect.selectedIndex].text;
       // console.log(arrayGenre.find((element) => element === monSelect.options[monSelect.selectedIndex].text));
-      // if (arrayGenre.find((element) => element === myOption) !== myOption) {
-      //   poster.classList.add('d-none');
-      // }
       // if (poster.contains.classList('d-none')) {
       //   poster.classList.remove('d-none');
+      // }
+
+      // ---------comparaison du selected avec les éléments des tableaux de genres des films--------
+      // if (arrayGenre.find((element) => element === myOption) !== myOption) {
+      //   poster.classList.add('d-none');
       // }
       if (!arrayGenre.some((element) => element === myOption)) {
         poster.classList.add('d-none');
